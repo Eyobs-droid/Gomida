@@ -45,6 +45,18 @@ image.addEventListener('click', function (e) {
     h1.textContent = "".concat((Number(coins) + 1).toLocaleString());
     localStorage.setItem('power', "".concat(Number(power) - 1));
     body.querySelector('#power').textContent = "".concat(Number(power) - 1);
+
+    // Add animation code here
+    for (var i = 0; i < 5; i++) {
+      var coin = document.createElement('div');
+      coin.className = 'tiny-coin';
+      coin.style.left = "".concat(x, "px");
+      coin.style.top = "".concat(y, "px");
+      body.appendChild(coin);
+      setTimeout(function () {
+        coin.remove();
+      }, 1000);
+    }
   }
 
   if (x < 150 & y < 150) {
@@ -62,3 +74,36 @@ image.addEventListener('click', function (e) {
   }, 100);
   body.querySelector('.progress').style.width = "".concat(100 * power / total, "%");
 });
+
+// Timer functionality
+var timer = 60;
+var timerInterval;
+
+function startTimer() {
+  timerInterval = setInterval(function () {
+    if (timer > 0) {
+      timer--;
+      body.querySelector('#timer').textContent = timer;
+    } else {
+      clearInterval(timerInterval);
+      image.removeEventListener('click', handleCoinClick);
+      alert('Time is up! Please wait for the timer to refill.');
+    }
+  }, 1000);
+}
+
+function resetTimer() {
+  timer = 60;
+  body.querySelector('#timer').textContent = timer;
+  image.addEventListener('click', handleCoinClick);
+}
+
+function handleCoinClick(e) {
+  // existing code...
+}
+
+// Start timer on page load
+startTimer();
+
+// Reset timer after user quits the game for a while (this is just a simulation)
+setTimeout(resetTimer, 60000); // 1 minute
