@@ -86,24 +86,4 @@ function startTimer() {
       body.querySelector('#timer').textContent = timer;
     } else {
       clearInterval(timerInterval);
-      image.removeEventListener('click', handleCoinClick);
-      alert('Time is up! Please wait for the timer to refill.');
-    }
-  }, 1000);
-}
-
-function resetTimer() {
-  timer = 60;
-  body.querySelector('#timer').textContent = timer;
-  image.addEventListener('click', handleCoinClick);
-}
-
-function handleCoinClick(e) {
-  // existing code...
-}
-
-// Start timer on page load
-startTimer();
-
-// Reset timer after user quits the game for a while (this is just a simulation)
-setTimeout(resetTimer, 60000); // 1 minute
+      image.removeEvent
