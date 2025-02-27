@@ -1,19 +1,19 @@
 .tiny-coin {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: gold;
-    border-radius: 50%;
-    animation: pop 1s ease-out;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  animation: pop 1s ease-out;
 }
 
 @keyframes pop {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
