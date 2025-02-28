@@ -2,13 +2,26 @@
 include 'db.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action']) && $_POST['action'] === 'join_telegram') {
+        $userId = $_POST['user_id'];
+        $coins = 2500;
+
+        // Update user balance
+        $stmt = $conn->prepare("UPDATE users SET coins = coins + :coins WHERE id = :userId");
+        $stmt->bindParam(':coins', $coins);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+
+        echo "Coins added successfully.";
+        exit;
+    }
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
     $coins = isset($_POST['coins']) ? (int)$_POST['coins'] : 0;
 
-   
     if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
         echo "All fields are required.";
         exit;
@@ -19,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    
     try {
         $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);
@@ -31,10 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        
         $stmt = $conn->prepare("INSERT INTO users (name, email, password, coins) VALUES (:name, :email, :password, :coins)");
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
