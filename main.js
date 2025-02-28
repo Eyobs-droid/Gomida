@@ -83,20 +83,12 @@ let timer = 60;
 let timerInterval;
 
 function startTimer() {
-    timerInterval = setInterval(() => {
-        if (timer > 0) {
-            timer--;
-            body.querySelector('#timer').textContent = timer;
-        } else {
-            clearInterval(timerInterval);
-            image.removeEventListener('click', handleCoinClick);
-            alert('Time is up! Please wait for the timer to refill.');
-        }
-    }, 1000);
+    timeEngine.start(timer); // Start the timeEngine timer
 }
 
 function resetTimer() {
     timer = 60;
+    timeEngine.reset(); // Reset the timeEngine timer
     body.querySelector('#timer').textContent = timer;
     image.addEventListener('click', handleCoinClick);
 }
