@@ -364,7 +364,8 @@ body {
 
 
 .guid {
-    background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
+    background-image: linear-gradient(135deg, #10002b, #3a0ca3, #240046);
+    box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
 }
 .guid-social {
     display: flex;
