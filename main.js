@@ -47,18 +47,6 @@ image.addEventListener('click', (e) => {
 
         localStorage.setItem('power', `${Number(power) - 1}`);
         body.querySelector('#power').textContent = `${Number(power) - 1}`;
-
-        // Add animation code here
-        for (let i = 0; i < 5; i++) {
-            let coin = document.createElement('div');
-            coin.className = 'tiny-coin';
-            coin.style.left = `${x}px`;
-            coin.style.top = `${y}px`;
-            body.appendChild(coin);
-            setTimeout(() => {
-                coin.remove();
-            }, 1000);
-        }
     }
 
     if (x < 150 & y < 150) {
@@ -76,29 +64,7 @@ image.addEventListener('click', (e) => {
     }, 100);
 
     body.querySelector('.progress').style.width = `${(100 * power) / total}%`;
+
+    // Start the timer with a specific time (e.g., 60 seconds)
+    timeEngine.start(60);
 });
-
-// Timer functionality
-let timer = 60;
-let timerInterval;
-
-function startTimer() {
-    timeEngine.start(timer); // Start the timeEngine timer
-}
-
-function resetTimer() {
-    timer = 60;
-    timeEngine.reset(); // Reset the timeEngine timer
-    body.querySelector('#timer').textContent = timer;
-    image.addEventListener('click', handleCoinClick);
-}
-
-function handleCoinClick(e) {
-    // existing code...
-}
-
-// Start timer on page load
-startTimer();
-
-// Reset timer after user quits the game for a while (this is just a simulation)
-setTimeout(resetTimer, 60000); // 1 minute
