@@ -364,7 +364,7 @@ body {
 
 
 .guid {
-    background-image: linear-gradient(135deg, #10002b, #3a0ca3, #240046);
+    background-color: black;
     box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
 }
 .guid-social {
