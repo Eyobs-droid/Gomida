@@ -9,57 +9,54 @@
     <meta name="theme-color" content="#f19e36" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
-
 </head>
-<body>
+<body class="index-bg"> <!-- Add this class -->
 
+<div class="coin-count-container">
+    <img src="./assets/images/g.png" width="45px">
+    <h1 class="select-none"></h1>
+</div>
 
-    <div class="coin-count-container">
-        <img src="./assets/images/g.png" width="45px">
-        <h1 class="select-none"></h1>
+<div class="rank-container">
+    <div class="rank-items">
+        <h3 class="select-none"></h3>
+        <span></span>
     </div>
+</div>
 
-    <div class="rank-container">
-        <div class="rank-items">
-            <h3 class="select-none"></h3>
-            <span></span>
-        </div>
-    </div>
-    
-    <div class="coin-container">
-        <img src="./assets/images/rr.png" id="coin" class="select-none" width="300px" />
-    </div>
+<div class="coin-container">
+    <img src="./assets/images/rr.png" id="coin" class="select-none" width="300px" />
+</div>
 <br><br>
-    <div class="menu-container">
-        <div class="power">
-            
-            <div class="power-count">
-                <span id="power" class="select-none">0</span>
-                <span class="gray select-none" id="total">/0</span>
-            </div>
-        </div>
-
-        <div class="menu-bottuns">
-            <a href="frens.html" class="button b-r">
-                <img src="./assets/images/1.png" alt="" width="28px">
-                <span class="select-none">Friends</span>
-            </a>
-            <a href="earn.html" class="button b-r">
-                <img src="./assets/images/2.png" alt="" width="28px">
-                <span class="select-none">Tasks</span>
-            </a>
-            <a href="boost.html" class="button">
-                <img src="./assets/images/3.png" alt="" width="28px">
-                <span class="select-none">Balance</span>
-            </a>
+<div class="menu-container">
+    <div class="power">
+        <div class="power-count">
+            <span id="power" class="select-none">0</span>
+            <span class="gray select-none" id="total">/0</span>
         </div>
     </div>
 
-    <div class="progress-bar">
-        <div class="progress"></div>
+    <div class="menu-bottuns">
+        <a href="frens.html" class="button b-r">
+            <img src="./assets/images/1.png" alt="" width="28px">
+            <span class="select-none">Friends</span>
+        </a>
+        <a href="earn.html" class="button b-r">
+            <img src="./assets/images/2.png" alt="" width="28px">
+            <span class="select-none">Tasks</span>
+        </a>
+        <a href="boost.html" class="button">
+            <img src="./assets/images/3.png" alt="" width="28px">
+            <span class="select-none">Balance</span>
+        </a>
     </div>
+</div>
 
-    <script src="./assets/js/timer.js"></script>
-    <script src="./assets/js/main.js"></script>
+<div class="progress-bar">
+    <div class="progress"></div>
+</div>
+
+<script src="./assets/js/timer.js"></script>
+<script src="./assets/js/main.js"></script>
 </body>
 </html>
