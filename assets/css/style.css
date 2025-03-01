@@ -64,6 +64,12 @@ body {
     font-size: 2rem;
     color: rgba(151, 151, 151, 0.773);
 }
+
+.index-bg {
+    bckground-image: linear-gradient(135deg, #10002b, #3a0ca3, #240046);
+    box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
+}
+
 .user-data {
     display: flex;
     flex-direction: column;
