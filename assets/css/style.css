@@ -173,7 +173,7 @@ body {
     width: 100%;
     padding: 1rem 0.25rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: auto;
     background-color: rgba(70, 67, 67, 0.2);
