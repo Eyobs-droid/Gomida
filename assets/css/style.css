@@ -146,38 +146,41 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .power {
     display: flex;
     justify-content: center;
     margin-right: 0.5rem;
-    width: 33%;
+    width: auto;
+    flex: 1;
 }
 .power-count {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .power-count span {
     color: #ffffff;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 .gray {
-    color: #d7d7d798!important;
-    font-size: 0.75rem!important;
+    color: #d7d7d798 !important;
+    font-size: 0.75rem !important;
 }
 .menu-bottuns {
-    width: 67%;
+    width: 100%;
     padding: 1rem 0.25rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 5rem;
+    height: auto;
     background-color: rgba(70, 67, 67, 0.2);
     border: 2px solid rgba(0, 0, 0, 0.03);
     border-radius: 15px;
-    margin-left: 0.5rem;
-    margin-right: -1.25rem;
+    margin: 0.5rem 0;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -186,7 +189,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0 0.25rem;
-    width: 33.3333%;
+    width: calc(33.3333% - 1rem);
+    margin: 0.5rem;
 }
 .button img {
     margin-top: 0.5rem;
@@ -201,8 +205,8 @@ body {
 }
 .progress-bar {
     width: 90%;
-    height: 1rem;
-    margin: 1.25rem auto;
+    height: 0.5rem;
+    margin: 1rem auto;
     border-radius: 30px;
     background-color: rgba(218, 218, 218, 0.5)
 }
