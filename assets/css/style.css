@@ -20,9 +20,9 @@ html {
 body {
     background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 75%);
     background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgba(23,23,23,1) 75%);
-    
+
     background-repeat: no-repeat;
-    min-height: 100vh;   
+    min-height: 100vh;
 }
 .haeder {
     display: flex;
@@ -173,7 +173,7 @@ body {
     width: 100%;
     padding: 1rem 0.25rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Changed from space-around */
     align-items: center;
     height: auto;
     background-color: rgba(70, 67, 67, 0.2);
@@ -189,8 +189,9 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    flex: 1;
+    /* flex: 1;  Removed flex: 1 */
     margin: 0.5rem;
+    min-width: 80px;  /* Experiment with different widths */
 }
 .button img {
     margin-top: 0.5rem;
@@ -260,23 +261,22 @@ body {
 }
 .free-boosts-buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 .free-boost-button {
     cursor: pointer;
     display: flex;
-   /* width: 50%; */
+    width: 50%;
     height: 4.5rem;
-    margin: 0.5rem 0.25rem;
+    margin: 0.5rem 0;
     justify-content: space-between;
     align-items: center;
     border-radius: 15px;
     padding: 0 0.75rem;
     background-color: rgba(218, 218, 218, 0.2);
     border:2px solid rgba(218, 218, 218, 0.02);
-    flex: 1;
 }
 .free-boosts-detail {
     display: flex;
@@ -340,8 +340,8 @@ body {
     margin-bottom: 0.25rem;
     font-weight: 300;
 }
-.boosters-button-detail h4, 
-.boosters-button-data span, 
+.boosters-button-detail h4,
+.boosters-button-data span,
 .boosters-button-data  p{
     color: #c1c1c1aa;
 }
@@ -461,7 +461,7 @@ body {
     margin-bottom: 1.25rem;
     font-size: 2rem;
     font-weight: bold;
-    
+
 }
 .frens-total-earn {
     cursor: pointer;
@@ -486,11 +486,11 @@ body {
 .leaders {
     color: #c1c1c16e;
 }
-.frens-help, 
+.frens-help,
 .frens-list {
     padding: 1rem;
 }
-.frens-help-title, 
+.frens-help-title,
 .frens-list-title {
     padding-left: 0.5rem;
     color: rgb(250, 250, 250);
@@ -507,7 +507,7 @@ input {
 }
 
 button {
-   
+
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -708,4 +708,3 @@ button:active {
 .leaderboard-item:last-child {
     border-bottom: none;
 }
-
