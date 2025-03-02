@@ -19,16 +19,15 @@ html {
 }
 body {
     background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 75%);
-    background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgba(23,23,23,1) 75%);
-
+    /*background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgba(23,23,23,1) 75%);*/
     background-repeat: no-repeat;
-    hieght: 100vh;
+    height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 .top-bar {
-    background-image: linear_gradient(135deg, #10002b, #3a0ca3, #240046);
+    background-image: linear-gradient(135deg, #10002b, #3a0ca3, #240046);
     height: 10px;
 }
 .haeder {
@@ -74,7 +73,7 @@ body {
 
 .index-bg {
     background-image: linear-gradient(135deg, #10002b, #3a0ca3, #240046);
-    box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;
+    /*box-shadow: 0 0 20px #8a2be2, 0 0 40px #8a2be2;*/
     height: 100%;
     min-height: 100vh;
 }
@@ -182,7 +181,7 @@ body {
     width: 100%;
     padding: 1rem 0.25rem;
     display: flex;
-    justify-content: space-between; /* Changed from space-around */
+    justify-content: space-around; /* Changed from space-around */
     align-items: center;
     height: auto;
     background-color: rgba(70, 67, 67, 0.2);
@@ -198,7 +197,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    /* flex: 1;  Removed flex: 1 */
+    flex: 1;
     margin: 0.5rem;
     min-width: 80px;  /* Experiment with different widths */
 }
