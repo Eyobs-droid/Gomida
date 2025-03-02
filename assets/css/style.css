@@ -22,7 +22,14 @@ body {
     background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgba(23,23,23,1) 75%);
 
     background-repeat: no-repeat;
-    min-height: 100vh;
+    hieght: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.top-bar {
+    background-image: linear_gradient(135deg, #10002b, #3a0ca3, #240046);
+    height: 10px;
 }
 .haeder {
     display: flex;
@@ -129,6 +136,8 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
+    align-items: center;
 }
 .coin-container span {
     position: absolute;
