@@ -180,7 +180,7 @@ body {
     border: 2px solid rgba(0, 0, 0, 0.03);
     border-radius: 15px;
     margin: 0.5rem 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .button {
@@ -188,8 +188,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 0.25rem;
-    width: calc(25% - 1rem);
+    padding: 0.5rem;
+    flex: 1;
     margin: 0.5rem;
 }
 .button img {
