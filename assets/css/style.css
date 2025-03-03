@@ -11,6 +11,11 @@ a:active {
 }
 html {
     font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 .select-none {
     -moz-user-select: none;
@@ -149,12 +154,14 @@ body {
     transform-style: preserve-3d;
 }
 .menu-container {
-    margin-top: 2.25rem;
-    width: 90%;
+    /*margin-top: 2.25rem;*/
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 0.5rem 0;
+    /*flex-wrap: wrap;*/
 }
 .power {
     display: flex;
@@ -181,13 +188,15 @@ body {
     width: 100%;
     padding: 1rem 0.25rem;
     display: flex;
-    justify-content: space-around; /* Changed from space-around */
+    justify-content: space-evenly; /* Changed from space-around */
     align-items: center;
     height: auto;
     background-color: rgba(70, 67, 67, 0.2);
     border: 2px solid rgba(0, 0, 0, 0.03);
     border-radius: 15px;
     margin: 0.5rem 0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     /*flex-wrap: nowrap;*/
 }
 
@@ -197,9 +206,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    flex: 1;
     margin: 0.5rem;
-    min-width: 80px;  /* Experiment with different widths */
+    text-align: center;
+    border-radius: 5px;
+    border:  none;
+    transition: background-color 0.3s;/* Experiment with different widths */
 }
 .button img {
     margin-top: 0.5rem;
@@ -528,6 +539,10 @@ button {
 button:active {
     background-color: #ffffff;
 }
+
+.button:hover {
+    background-color: #2980b9;
+}
 .frens-invite {
      margin-top: auto;
     cursor: pointer;
@@ -712,6 +727,20 @@ button:active {
     justify-content: space-between;
     align-items: center
 }
+
+
+@media (max-width: 768px) {
+    .button {
+        flex-basis: calc(50% - 1rem); /* Make buttons smaller on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        flex-basis: 100%; /* Stack buttons on very small screens */
+    }
+}
+
 
 .leaderboard-item:last-child {
     border-bottom: none;
