@@ -190,12 +190,13 @@ body {
     display: flex;
     justify-content: space-around; /* Changed from space-around */
     align-items: center;
+    min-height: 5rem;
     height: auto;
     background-color: rgba(70, 67, 67, 0.2);
     border: 2px solid rgba(0, 0, 0, 0.03);
     border-radius: 15px;
     margin: 0.5rem 0;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     gap: 0.5rem;
     /*flex-wrap: nowrap;*/
 }
@@ -212,7 +213,8 @@ body {
     border:  none;
     transition: background-color 0.3s, color 0.3s;
     background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff/* Experiment with different widths */
+    color: #ffffff
+    flex-basis: 20%;/* Experiment with different widths */
 }
 .button img {
     margin-bottom: 0.25rem;
@@ -732,26 +734,6 @@ button:active {
     justify-content: space-between;
     align-items: center
 }
-
-
-@media (max-width: 600px) {
-    .button {
-       paddinf: 0.5rem; /* Make buttons smaller on small screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .button {
-        flex-basis: calc(50% - 1rem);/* Stack buttons on very small screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .button {
-        flex-basis: 100%;
-    }
-}
-
 
 .leaderboard-item:last-child {
     border-bottom: none;
