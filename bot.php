@@ -6,9 +6,9 @@ if (isset($update["message"])) {
     $chat_id = $update["message"]["chat"]["id"];
     $telegram_user_id = $update["message"]["from"]["id"]; // Grab telegram user ID
 
-    // Replace with your local XAMPP path
-    $registrationLink = "http://localhost/gomida/login.html?telegram_id=" . $telegram_user_id;  // Assuming project folder is "gomida"
-    $message = "Please register or continue playing: " . $registrationLink;
+    // Always redirect to login.html with the Telegram ID
+    $registrationLink = "http://localhost/gomida/login.html?telegram_id=" . $telegram_user_id;  // Replace "gomida" and domain as needed
+    $message = "Please sign up or log in to play: " . $registrationLink;
     sendMessage($chat_id, $message);
 }
 
