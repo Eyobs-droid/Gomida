@@ -4,9 +4,10 @@ $update = json_decode($content, true);
 
 $chat_id = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
+$telegram_user_id = $update["message"]["from"]["id"]; // Grab telegram user ID
 
 if($message == "/start") {
-    sendMessage($chat_id, "Welcome to your new bot!");
+    sendMessage($chat_id, "Welcome to your new bot! Your telegram ID is: " . $telegram_user_id);
 }
 
 function sendMessage($chat_id, $message) {
