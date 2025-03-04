@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <meta name="theme-color" content="#f19e36" />
@@ -57,19 +57,23 @@
         let coins = localStorage.getItem('coins')
         document.querySelector('.login-coins-count').textContent = coins;
 
-        // Function to set the telegram_id value
+        // Function to extract the Telegram ID from the URL
+        function getTelegramIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('telegram_id');
+        }
+
+        // Set the Telegram ID in the hidden input field
         function setTelegramId() {
-            // Check if Telegram is available and has the user ID
-            if (typeof telegram !== 'undefined' && telegram.user && telegram.user.id) {
-                document.getElementById('telegram_id').value = telegram.user.id;
+            const telegramId = getTelegramIdFromUrl();
+            if (telegramId) {
+                document.getElementById('telegram_id').value = telegramId;
             } else {
-                // Handle case where Telegram ID is not available (e.g., in a web browser)
-                console.log('Telegram user ID not available.');
-                document.getElementById('telegram_id').value = '0'; // Set a default value
+                console.log('Telegram ID not found in URL.');
             }
         }
 
-        // Call the function when the page loads
+        // Call setTelegramId when the page loads
         window.onload = setTelegramId;
     </script>
 
