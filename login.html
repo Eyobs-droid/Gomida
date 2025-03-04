@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Sign Up / Log In</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <meta name="theme-color" content="#f19e36" />
@@ -28,12 +28,25 @@
     </div>
 
     <div class="login-page-detail">
-        <span>Sign up to save your progress.</span>
+        <span>Sign up or log in to save your progress.</span>
     </div>
 
-    <div class="login-form" id="registrationForm">
-        <form action="process_form.php" method="POST" onsubmit="document.getElementById('coins').value = localStorage.getItem('coins');">
-            <input type="hidden" name="telegram_id" id="telegram_id" value="">
+    <div class="login-form">
+        <!-- Login Form -->
+        <form id="loginForm" action="process_login.php" method="POST">
+            <input type="hidden" name="telegram_id" id="login_telegram_id" value="">
+            <label for="login_email">Email</label>
+            <input type="email" name="login_email" id="login_email" required>
+
+            <label for="login_password">Password</label>
+            <input type="password" name="login_password" id="login_password" required>
+
+            <input class="submit-button" type="submit" value="Log In">
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" action="process_form.php" method="POST">
+            <input type="hidden" name="telegram_id" id="signup_telegram_id" value="">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" required>
 
@@ -48,7 +61,7 @@
 
             <input type="hidden" name="coins" id="coins">
 
-            <input class="submit-button" type="submit" value="Submit">
+            <input class="submit-button" type="submit" value="Sign Up">
         </form>
 
     </div>
@@ -63,44 +76,20 @@
             return urlParams.get('telegram_id');
         }
 
-        // Function to check if user exists
-        function checkUserExists(telegramId) {
-            fetch('check_user.php?telegram_id=' + telegramId)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        // User exists, redirect to game with welcome message
-                        window.location.href = "index.html?welcome=true";
-                    } else {
-                        // User does not exist, show registration form
-                        document.getElementById('registrationForm').style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error checking user:', error);
-                    alert('Failed to check user.  Please try again later.');
-                });
-        }
-
-
-        // Set the Telegram ID in the hidden input field and check if user exists
+        // Set the Telegram ID in both forms
         function setTelegramId() {
             const telegramId = getTelegramIdFromUrl();
             if (telegramId) {
-                document.getElementById('telegram_id').value = telegramId;
-                checkUserExists(telegramId);
+                document.getElementById('login_telegram_id').value = telegramId;
+                document.getElementById('signup_telegram_id').value = telegramId;
             } else {
                 console.log('Telegram ID not found in URL.');
                 // Handle the case where there's no Telegram ID in the URL (optional)
-                document.getElementById('registrationForm').style.display = 'block'; // Show registration form by default
             }
         }
 
         // Call setTelegramId when the page loads
         window.onload = setTelegramId;
-
-        // Initially hide the registration form
-        document.getElementById('registrationForm').style.display = 'none';
     </script>
 
     <script src="./assets/js/charge.js"></script>
