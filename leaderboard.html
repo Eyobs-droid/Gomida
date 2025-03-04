@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table id="leaderboardTable">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Coins</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
+    <script>
+        function fetchLeaderboard() {
+            fetch('get_leaderboard.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#leaderboardTable tbody');
+                    tableBody.innerHTML = ''; // Clear existing data
+                    data.forEach((user, index) => {
+                        const row = document.createElement('tr');
+                        const rankCell = document.createElement('td');
+                        rankCell.textContent = index + 1;
+                        const nameCell = document.createElement('td');
+                        nameCell.textContent = user.name;
+                        const coinsCell = document.createElement('td');
+                        coinsCell.textContent = user.coins;
+
+                        row.appendChild(rankCell);
+                        row.appendChild(nameCell);
+                        row.appendChild(coinsCell);
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching leaderboard:', error));
+        }
+
+        // Fetch leaderboard data on page load
+        fetchLeaderboard();
+    </script>
+</body>
+</html>
