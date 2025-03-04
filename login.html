@@ -19,7 +19,7 @@
                 <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
-  
+
     </div>
 
     <div class="login-coins">
@@ -28,33 +28,49 @@
     </div>
 
     <div class="login-page-detail">
-        <span>Sign up to save your rank and coins.</span>
+        <span>Sign up to save your progress.</span>
     </div>
 
     <div class="login-form">
         <form action="process_form.php" method="POST" onsubmit="document.getElementById('coins').value = localStorage.getItem('coins');">
+            <input type="hidden" name="telegram_id" id="telegram_id" value="">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" required>
-        
+
             <label for="email">Email</label>
             <input type="email" name="email" id="email" required>
-        
+
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
-        
+
             <label for="confirm">Confirm Password</label>
-            <input type="password" name="confirm" id="confirm" required> 
-        
+            <input type="password" name="confirm" id="confirm" required>
+
             <input type="hidden" name="coins" id="coins">
-        
+
             <input class="submit-button" type="submit" value="Submit">
         </form>
-        
+
     </div>
 
     <script>
         let coins = localStorage.getItem('coins')
         document.querySelector('.login-coins-count').textContent = coins;
+
+        // Function to set the telegram_id value
+        function setTelegramId() {
+            // Check if Telegram is available and has the user ID
+            if (typeof telegram !== 'undefined' && telegram.user && telegram.user.id) {
+                document.getElementById('telegram_id').value = telegram.user.id;
+            } else {
+                // Handle case where Telegram ID is not available (e.g., in a web browser)
+                console.log('Telegram user ID not available.');
+                document.getElementById('telegram_id').value = '0'; // Set a default value
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = setTelegramId;
     </script>
 
     <script src="./assets/js/charge.js"></script>
