@@ -65,16 +65,16 @@
     <div class="leaderboard-container"></div>
 
     <script>
-        // Function to display welcome message
-        function displayWelcomeMessage() {
+        // Function to display login success message (optional)
+        function displayLoginSuccessMessage() {
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('welcome') === 'true') {
-                alert("Welcome back! Let's play!");
+            if (urlParams.get('login') === 'success') {
+                alert("Login successful! Welcome back!");
             }
         }
 
         // Call the function when the page loads
-        window.onload = displayWelcomeMessage;
+        window.onload = displayLoginSuccessMessage;
     </script>
     <script src="./assets/js/timer.js"></script>
     <script src="./assets/js/main.js"></script>
