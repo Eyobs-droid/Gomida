@@ -64,6 +64,18 @@
 
     <div class="leaderboard-container"></div>
 
+    <script>
+        // Function to display welcome message
+        function displayWelcomeMessage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('welcome') === 'true') {
+                alert("Welcome back! Let's play!");
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = displayWelcomeMessage;
+    </script>
     <script src="./assets/js/timer.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>

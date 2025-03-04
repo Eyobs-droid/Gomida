@@ -17,7 +17,7 @@
             <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 11.9299H2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        </svg>
         </a>
 
     </div>
@@ -31,7 +31,7 @@
         <span>Sign up to save your progress.</span>
     </div>
 
-    <div class="login-form">
+    <div class="login-form" id="registrationForm">
         <form action="process_form.php" method="POST" onsubmit="document.getElementById('coins').value = localStorage.getItem('coins');">
             <input type="hidden" name="telegram_id" id="telegram_id" value="">
             <label for="name">Name</label>
@@ -63,18 +63,44 @@
             return urlParams.get('telegram_id');
         }
 
-        // Set the Telegram ID in the hidden input field
+        // Function to check if user exists
+        function checkUserExists(telegramId) {
+            fetch('check_user.php?telegram_id=' + telegramId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        // User exists, redirect to game with welcome message
+                        window.location.href = "index.html?welcome=true";
+                    } else {
+                        // User does not exist, show registration form
+                        document.getElementById('registrationForm').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking user:', error);
+                    alert('Failed to check user.  Please try again later.');
+                });
+        }
+
+
+        // Set the Telegram ID in the hidden input field and check if user exists
         function setTelegramId() {
             const telegramId = getTelegramIdFromUrl();
             if (telegramId) {
                 document.getElementById('telegram_id').value = telegramId;
+                checkUserExists(telegramId);
             } else {
                 console.log('Telegram ID not found in URL.');
+                // Handle the case where there's no Telegram ID in the URL (optional)
+                document.getElementById('registrationForm').style.display = 'block'; // Show registration form by default
             }
         }
 
         // Call setTelegramId when the page loads
         window.onload = setTelegramId;
+
+        // Initially hide the registration form
+        document.getElementById('registrationForm').style.display = 'none';
     </script>
 
     <script src="./assets/js/charge.js"></script>
