@@ -1,5 +1,5 @@
 <?php
-include 'db.php'; 
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'join_telegram') {
@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
     $coins = isset($_POST['coins']) ? (int)$_POST['coins'] : 0;
+    $telegram_id = isset($_POST['telegram_id']) ? $_POST['telegram_id'] : null; // Get Telegram ID
 
     if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
         echo "All fields are required.";
@@ -45,11 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $conn->prepare("INSERT INTO users (name, email, password, coins) VALUES (:name, :email, :password, :coins)");
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password, coins, telegram_id) VALUES (:name, :email, :password, :coins, :telegram_id)");
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':coins', $coins);
+        $stmt->bindParam(':telegram_id', $telegram_id); // Bind Telegram ID
         $stmt->execute();
 
         echo "Registration successful.";
